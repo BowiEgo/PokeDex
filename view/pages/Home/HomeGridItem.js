@@ -1,23 +1,51 @@
+/* 
+ * HomeGridItem
+ * @flow
+*/ 
+
+
 import React, { Component } from 'react'
 import {
   Image,
+  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
   View
 } from 'react-native'
 
+import Icon from 'react-native-vector-icons/Ionicons'
 import { screen } from '../../common/utils'
 
-type Props = {
-  imageSource: String
+const abilityColorMap = {
+  'Grass': '#9bcc50',
+  'Poison': '#b97fc9',
+  'Fire': '#fd7d24',
 }
 
-export default class HomeGridItem extends Component<Props> {
+type Props = {
+  containerStyle: Object,
+  imageSource: String,
+  serialNumber: Number,
+  name: String,
+  abilities: String[]
+}
+
+export default class HomeGridItem extends Component<Props, {}> {
 
   constructor(props) {
     super(props)
   }
+
+  _renderAbilities = (abilities: string[]) => (
+    abilities.map((item, index) => (
+      <View
+        key={index}
+        style={[styles.abilities, {backgroundColor: abilityColorMap[item]}]}>
+        <Text style={{color: '#fff', lineHeight: 20}}>{item}</Text>
+      </View>
+    ))
+  )
 
   render() {
     return (
@@ -28,18 +56,18 @@ export default class HomeGridItem extends Component<Props> {
           style={[{width: null, height: 150}]}
           source={this.props.imageSource}
         />
+        <View style={{alignItems: 'center'}}>
+          <ImageBackground
+            style={[{width: screen.width * .5 - 40, alignItems: 'center'}]}
+            source={require('../../assets/img/card-bg.png')}>
+            <Icon style={styles.like} name={this.props.isLike ? 'ios-heart' : 'ios-heart-outline'} size={16} color={'#ff9999'} />
+          </ImageBackground>
+        </View>
         <View style={styles.wrapper}>
           <Text style={styles.serialNumber}>{this.props.serialNumber}</Text>
           <Text style={styles.name}>{this.props.name}</Text>
           <View style={styles.abilitiesContainer}>
-            <View
-              style={[styles.abilities, {backgroundColor: '#9bcc50'}]}>
-              <Text style={{color: '#000'}}>Grass</Text>
-            </View>
-            <View 
-              style={[styles.abilities, { backgroundColor: '#b97fc9'}]}>
-              <Text style={{color: '#fff'}}>Poison</Text>
-            </View>
+            {this._renderAbilities(this.props.abilities)}
           </View>
         </View>
       </TouchableOpacity>
@@ -51,10 +79,11 @@ const styles = StyleSheet.create({
   container: {
     // marginBottom: 10,
     marginVertical: 10,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
   },
   wrapper: {
     padding: 10,
+    backgroundColor: '#fff',
   },
   serialNumber: {
     marginBottom: 8,
@@ -73,7 +102,6 @@ const styles = StyleSheet.create({
   },
   abilities: {
     width: screen.width * .25 - 20,
-    // height: 20,
     marginRight: 4,
     alignItems: 'center',
     borderRadius: 3,

@@ -43,31 +43,43 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '1',
           name: 'Bulbasaur',
+          abilities: ['Grass', 'Poison'],
+          isLike: true,
           img: require('../../assets/img/001.png')
         },
         {
           index: '2',
           name: 'Ivysaur',
+          abilities: ['Grass', 'Poison'],
+          isLike: true,
           img: require('../../assets/img/002.png')
         },
         {
           index: '3',
           name: 'Venusaur',
+          abilities: ['Grass', 'Poison'],
+          isLike: false,
           img: require('../../assets/img/003.png')
         },
         {
           index: '4',
           name: 'Charmander',
+          abilities: ['Fire'],
+          isLike: true,
           img: require('../../assets/img/004.png')
         },
         {
           index: '5',
           name: 'Charmeleon',
+          abilities: ['Fire'],
+          isLike: true,
           img: require('../../assets/img/005.png')
         },
         {
           index: '6',
           name: 'Charizard',
+          abilities: ['Fire'],
+          isLike: false,
           img: require('../../assets/img/006.png')
         }
       ])
@@ -112,8 +124,10 @@ export default class HomePage extends Component<State, Props> {
           renderRow={(rowData) =>
             <HomeGridItem
               serialNumber={'#00' + rowData.index}
-              name="Bulbasaur"
+              name={rowData.name}
+              abilities={rowData.abilities}
               imageSource={rowData.img}
+              isLike={rowData.isLike}
               containerStyle={styles.cardContainer}
               imageStyle={styles.cardImageStyle}
             />
@@ -139,6 +153,7 @@ const styles = StyleSheet.create({
   },
   listContainer: {
     // backgroundColor: '#f6f6f6',
+    backgroundColor: '#fff',
     paddingLeft: 10,
     paddingRight: 10,
     paddingBottom: 10,
@@ -154,10 +169,10 @@ const styles = StyleSheet.create({
         // height: screen.width / 2 * 1.3,
       },
       android: {
-        height: screen.width / 2 * 1.4,
+        // height: screen.width / 2 * 1.4,
       }
     }),
-    backgroundColor: '#fff',
+    backgroundColor: '#F2F2F2',
     borderRadius: 4,
     overflow: 'hidden'
   }
