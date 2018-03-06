@@ -13,7 +13,7 @@ import {
   View
 } from 'react-native';
 
-import { TabNav, HomeDrawNav } from './view/router'
+import { TabNav, HomeDrawNav } from './router'
 
 export default class App extends Component<{}> {
   constructor() {
