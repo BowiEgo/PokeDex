@@ -13,4 +13,13 @@ const theme2 = {
 colors['theme1'] = theme1
 colors['theme2'] = theme2
 
-export default colors
+const abilityColorMap = {
+  'Grass': '#9bcc50',
+  'Poison': '#b97fc9',
+  'Fire': '#fd7d24',
+}
+
+export { 
+  colors,
+  abilityColorMap
+}

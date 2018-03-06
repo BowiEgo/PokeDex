@@ -1,6 +1,5 @@
 import * as ActionTypes from '../actionTypes'
-import colors from '../../common/colors'
-console.log(colors)
+import { colors } from '../../common/colors'
 
 const initialState = {
   theme: {

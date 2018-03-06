@@ -8,6 +8,7 @@ import StorePage from '../pages/Store'
 import UserPage from '../pages/User'
 
 import SearchPage from '../pages/Search'
+import PokemonDetailPage from '../pages/PokemonDetail'
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 const myIcon = (iconName, color) => {
@@ -30,6 +31,9 @@ const HomeDrawerNav = StackNavigator(
     },
     Search: {
       screen: SearchPage
+    },
+    PokemonDetail: {
+      screen: PokemonDetailPage
     }
   }
 )

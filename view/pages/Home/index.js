@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   FlatList,
+  ImageBackground,
   StatusBar,
   StyleSheet,
   Text,
@@ -12,7 +13,7 @@ import {
 
 import store from '../../redux/store'
 import { screen } from '../../common/utils'
-import colors from '../../common/colors'
+import { colors } from '../../common/colors'
 
 import { SearchBar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -43,6 +44,7 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '1',
           name: 'Bulbasaur',
+          nameCN: '妙蛙种子',
           abilities: ['Grass', 'Poison'],
           isLike: true,
           img: require('../../assets/img/001.png')
@@ -50,6 +52,7 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '2',
           name: 'Ivysaur',
+          nameCN: '妙蛙草',
           abilities: ['Grass', 'Poison'],
           isLike: true,
           img: require('../../assets/img/002.png')
@@ -57,6 +60,7 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '3',
           name: 'Venusaur',
+          nameCN: '妙蛙花',
           abilities: ['Grass', 'Poison'],
           isLike: false,
           img: require('../../assets/img/003.png')
@@ -64,6 +68,7 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '4',
           name: 'Charmander',
+          nameCN: '小火龙',
           abilities: ['Fire'],
           isLike: true,
           img: require('../../assets/img/004.png')
@@ -71,6 +76,7 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '5',
           name: 'Charmeleon',
+          nameCN: '火恐龙',
           abilities: ['Fire'],
           isLike: true,
           img: require('../../assets/img/005.png')
@@ -78,6 +84,7 @@ export default class HomePage extends Component<State, Props> {
         {
           index: '6',
           name: 'Charizard',
+          nameCN: '喷火龙',
           abilities: ['Fire'],
           isLike: false,
           img: require('../../assets/img/006.png')
@@ -99,6 +106,11 @@ export default class HomePage extends Component<State, Props> {
   //   this._navListener.remove()
   // }
 
+  _goPokemonDetail = () => {
+    const { navigate } = this.props.navigation
+    navigate('PokemonDetail')
+  }
+
   render() {
     const { navigate } = this.props.navigation
     return (
@@ -117,22 +129,33 @@ export default class HomePage extends Component<State, Props> {
             </Icon.Button>
           )}
         />
-        <ListView 
-          contentContainerStyle={styles.listContainer}
-          initialListSize={4}
-          dataSource={this.state.cardData}
-          renderRow={(rowData) =>
-            <HomeGridItem
-              serialNumber={'#00' + rowData.index}
-              name={rowData.name}
-              abilities={rowData.abilities}
-              imageSource={rowData.img}
-              isLike={rowData.isLike}
-              containerStyle={styles.cardContainer}
-              imageStyle={styles.cardImageStyle}
-            />
-          }
-        />
+        <View style={styles.wrapper}>
+          <ImageBackground
+            style={[styles.listContainerBg, {left: 0}]}
+            source={require('../../assets/img/container-bg.png')}>
+          </ImageBackground>
+          <ImageBackground
+            style={[styles.listContainerBg, {right: 0}]}
+            source={require('../../assets/img/container-bg.png')}>
+          </ImageBackground>
+          <ListView 
+            contentContainerStyle={styles.listContainer}
+            initialListSize={4}
+            dataSource={this.state.cardData}
+            renderRow={(rowData) =>
+              <HomeGridItem
+                serialNumber={'#00' + rowData.index}
+                name={rowData.nameCN}
+                abilities={rowData.abilities}
+                imageSource={rowData.img}
+                isLike={rowData.isLike}
+                containerStyle={styles.cardContainer}
+                imageStyle={styles.cardImageStyle}
+                onPress={this._goPokemonDetail}
+              />
+            }
+          />
+        </View>
       </View>
     )
   }
@@ -151,19 +174,27 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: '500',
   },
-  listContainer: {
-    // backgroundColor: '#f6f6f6',
+  wrapper: {
     backgroundColor: '#fff',
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 10,
+  },
+  listContainer: {
+    backgroundColor: 'transparent',
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 80,
     width: screen.width,
     flexDirection: 'row',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
   },
+  listContainerBg: {
+    width: screen.width * .058,
+    height: screen.height,
+    flex: 1,
+    position: 'absolute'
+  },
   cardContainer: {
-    width: screen.width / 2 - 14,
+    width: screen.width / 2 - 30,
     ...Platform.select({
       ios: {
         // height: screen.width / 2 * 1.3,

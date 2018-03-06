@@ -3,7 +3,6 @@
  * @flow
 */ 
 
-
 import React, { Component } from 'react'
 import {
   Image,
@@ -16,12 +15,7 @@ import {
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import { screen } from '../../common/utils'
-
-const abilityColorMap = {
-  'Grass': '#9bcc50',
-  'Poison': '#b97fc9',
-  'Fire': '#fd7d24',
-}
+import { abilityColorMap } from '../../common/colors'
 
 type Props = {
   containerStyle: Object,
@@ -51,14 +45,15 @@ export default class HomeGridItem extends Component<Props, {}> {
     return (
       <TouchableOpacity
         style={[styles.container, this.props.containerStyle]}
-        activeOpacity={.8}>
+        activeOpacity={.8}
+        onPress={this.props.onPress}>
         <Image
           style={[{width: null, height: 150}]}
           source={this.props.imageSource}
         />
         <View style={{alignItems: 'center'}}>
           <ImageBackground
-            style={[{width: screen.width * .5 - 40, alignItems: 'center'}]}
+            style={[{width: screen.width * .5 - 40, height: 30, alignItems: 'center', justifyContent: 'center'}]}
             source={require('../../assets/img/card-bg.png')}>
             <Icon style={styles.like} name={this.props.isLike ? 'ios-heart' : 'ios-heart-outline'} size={16} color={'#ff9999'} />
           </ImageBackground>
@@ -101,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 6
   },
   abilities: {
-    width: screen.width * .25 - 20,
+    width: screen.width * .25 - 26,
     marginRight: 4,
     alignItems: 'center',
     borderRadius: 3,
