@@ -8,8 +8,6 @@ import {
 
 import { screen } from '../../common/utils'
 
-import Icon from 'react-native-vector-icons/Ionicons'
-
 type Props = {
   imageSource: String
 }
@@ -28,11 +26,19 @@ export default class HomeGridItem extends Component<Props> {
           source={this.props.imageSource}
         />
         <View style={styles.wrapper}>
-          <Text style={styles.title}>{this.props.title}</Text>
-          <Text style={styles.author}>来自：{this.props.author}</Text>
-          <Text style={styles.time}>{this.props.time}</Text>
+          <Text style={styles.serialNumber}>{this.props.serialNumber}</Text>
+          <Text style={styles.name}>{this.props.name}</Text>
+          <View style={styles.abilitiesContainer}>
+            <View 
+              style={[styles.abilities, {backgroundColor: '#9bcc50'}]}>
+              <Text style={{color: '#000'}}>Grass</Text>
+            </View>
+            <View 
+              style={[styles.abilities, { backgroundColor: '#b97fc9'}]}>
+              <Text style={{color: '#fff'}}>Poison</Text>
+            </View>
+          </View>
         </View>
-        <Icon style={styles.like} name={this.props.isLike ? 'ios-heart' : 'ios-heart-outline'} size={16} color={'#ff9999'} />
       </View>
     )
   }
@@ -47,25 +53,25 @@ const styles = StyleSheet.create({
   wrapper: {
     padding: 10,
   },
-  title: {
-    marginBottom: 10,
-    color: '#333',
+  serialNumber: {
+    marginBottom: 8,
+    color: 'grey',
     fontSize: 14,
-  },
-  author: {
-    color: '#333',
     fontWeight: 'bold',
-    lineHeight: 20,
-    fontSize: 10,
   },
-  time: {
+  name: {
     color: '#333',
-    fontWeight: 'bold',
-    fontSize: 10,
+    fontSize: 16,
   },
-  like: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10
+  abilitiesContainer: {
+    flexDirection: 'row',
+    marginTop: 6
+  },
+  abilities: {
+    width: 70,
+    height: 20,
+    marginRight: 4,
+    alignItems: 'center',
+    borderRadius: 3,
   }
 })
