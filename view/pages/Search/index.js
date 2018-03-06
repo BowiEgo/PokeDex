@@ -74,20 +74,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     // paddingHorizontal: 10,
-    backgroundColor: '#fff',
+    backgroundColor: '#fff'
   },
   backButton: {
     width: screen.width * 0.1,
     height: 48,
     // backgroundColor: '#000',
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   searchBarContainer: {
     width: screen.width * 0.86,
     backgroundColor: '#fff',
     borderTopWidth: 0,
-    borderBottomWidth: 0,
+    borderBottomWidth: 0
   },
   searchBarInput: {
     backgroundColor: '#F5F5FF',

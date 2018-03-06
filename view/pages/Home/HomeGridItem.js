@@ -3,6 +3,7 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View
 } from 'react-native'
 
@@ -20,7 +21,9 @@ export default class HomeGridItem extends Component<Props> {
 
   render() {
     return (
-      <View style={[styles.container, this.props.containerStyle]}>
+      <TouchableOpacity
+        style={[styles.container, this.props.containerStyle]}
+        activeOpacity={.8}>
         <Image
           style={[{width: null, height: 150}]}
           source={this.props.imageSource}
@@ -29,7 +32,7 @@ export default class HomeGridItem extends Component<Props> {
           <Text style={styles.serialNumber}>{this.props.serialNumber}</Text>
           <Text style={styles.name}>{this.props.name}</Text>
           <View style={styles.abilitiesContainer}>
-            <View 
+            <View
               style={[styles.abilities, {backgroundColor: '#9bcc50'}]}>
               <Text style={{color: '#000'}}>Grass</Text>
             </View>
@@ -39,7 +42,7 @@ export default class HomeGridItem extends Component<Props> {
             </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
@@ -61,15 +64,16 @@ const styles = StyleSheet.create({
   },
   name: {
     color: '#333',
-    fontSize: 16,
+    fontSize: 16
   },
   abilitiesContainer: {
     flexDirection: 'row',
-    marginTop: 6
+    marginTop: 6,
+    marginBottom: 6
   },
   abilities: {
-    width: 70,
-    height: 20,
+    width: screen.width * .25 - 20,
+    // height: 20,
     marginRight: 4,
     alignItems: 'center',
     borderRadius: 3,

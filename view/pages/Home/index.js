@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     width: screen.width / 2 - 14,
     ...Platform.select({
       ios: {
-        height: screen.width / 2 * 1.3,
+        // height: screen.width / 2 * 1.3,
       },
       android: {
         height: screen.width / 2 * 1.4,
