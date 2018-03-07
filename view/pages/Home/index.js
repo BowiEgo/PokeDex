@@ -156,6 +156,7 @@ export default class HomePage extends Component<State, Props> {
             }
           />
         </View>
+        <View>
       </View>
     )
   }
