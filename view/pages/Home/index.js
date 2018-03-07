@@ -22,6 +22,9 @@ import StatusBarWithBg from '../../components/StatusBarWithBg'
 import PageHeader from '../../components/PageHeader'
 import HomeGridItem from './HomeGridItem'
 
+/* <HomePage />
+============================================================================= */
+
 type State = {
   cardData: Array<any>,
   imageMap: Object
@@ -42,7 +45,7 @@ export default class HomePage extends Component<State, Props> {
     this.state = {
       cardData: ds.cloneWithRows([
         {
-          index: '1',
+          index: 1,
           name: 'Bulbasaur',
           nameCN: '妙蛙种子',
           abilities: ['Grass', 'Poison'],
@@ -144,7 +147,7 @@ export default class HomePage extends Component<State, Props> {
             dataSource={this.state.cardData}
             renderRow={(rowData) =>
               <HomeGridItem
-                serialNumber={'#00' + rowData.index}
+                serialNumber={rowData.index}
                 name={rowData.nameCN}
                 abilities={rowData.abilities}
                 imageSource={rowData.img}
@@ -160,6 +163,8 @@ export default class HomePage extends Component<State, Props> {
     )
   }
 }
+
+/* StyleSheet =============================================================== */
 
 const styles = StyleSheet.create({
   container: {

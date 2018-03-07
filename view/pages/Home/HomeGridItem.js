@@ -2,6 +2,7 @@
  * HomeGridItem
  * @flow
 */ 
+"use strict"
 
 import React, { Component } from 'react'
 import {
@@ -16,6 +17,9 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons'
 import { screen } from '../../common/utils'
 import { abilityColorMap } from '../../common/colors'
+
+/* <HomeGridItem />
+============================================================================= */
 
 type Props = {
   containerStyle: Object,
@@ -69,6 +73,8 @@ export default class HomeGridItem extends Component<Props, {}> {
     )
   }
 }
+
+/* StyleSheet =============================================================== */
 
 const styles = StyleSheet.create({
   container: {
