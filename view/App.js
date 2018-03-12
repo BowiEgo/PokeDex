@@ -14,6 +14,7 @@ import {
 } from 'react-native';
 
 import { TabNav, HomeDrawNav } from './router'
+import Playground from './pages/Playground'
 
 export default class App extends Component<{}> {
   constructor() {
@@ -23,6 +24,7 @@ export default class App extends Component<{}> {
   render() {
     return (
       <TabNav/>
+      // <Playground/>
     )
   }
 }

@@ -1,3 +1,9 @@
+/* 
+ * HomePage
+ * @flow
+*/ 
+"use strict"
+
 import React, { Component } from 'react'
 import {
   FlatList,
@@ -14,6 +20,7 @@ import {
 import store from '../../redux/store'
 import { screen } from '../../common/utils'
 import { colors } from '../../common/colors'
+import ui from '../../common/ui'
 
 import { SearchBar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -21,6 +28,9 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import StatusBarWithBg from '../../components/StatusBarWithBg'
 import PageHeader from '../../components/PageHeader'
 import HomeGridItem from './HomeGridItem'
+
+/* <HomePage />
+============================================================================= */
 
 type State = {
   cardData: Array<any>,
@@ -42,7 +52,7 @@ export default class HomePage extends Component<State, Props> {
     this.state = {
       cardData: ds.cloneWithRows([
         {
-          index: '1',
+          index: 1,
           name: 'Bulbasaur',
           nameCN: '妙蛙种子',
           abilities: ['Grass', 'Poison'],
@@ -144,7 +154,7 @@ export default class HomePage extends Component<State, Props> {
             dataSource={this.state.cardData}
             renderRow={(rowData) =>
               <HomeGridItem
-                serialNumber={'#00' + rowData.index}
+                serialNumber={rowData.index}
                 name={rowData.nameCN}
                 abilities={rowData.abilities}
                 imageSource={rowData.img}
@@ -162,13 +172,15 @@ export default class HomePage extends Component<State, Props> {
   }
 }
 
+/* StyleSheet =============================================================== */
+
 const styles = StyleSheet.create({
   container: {
     width: screen.width,
     flex: 1,
     alignItems: 'center',
     // backgroundColor: colors.mainThemeColor,
-    paddingTop: 30
+    paddingTop: ui.statusBarHeight
   },
   headerTitle: {
     color: colors.mainThemeColor,

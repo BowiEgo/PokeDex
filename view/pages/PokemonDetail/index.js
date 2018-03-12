@@ -20,6 +20,9 @@ import { colors, abilityColorMap } from '../../common/colors'
 import StatusBarWithBg from '../../components/StatusBarWithBg'
 import PageHeader from '../../components/PageHeader'
 
+/* <HomePage />
+============================================================================= */
+
 type Props = {
 }
 
