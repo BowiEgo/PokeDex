@@ -1,3 +1,9 @@
+/* 
+ * HomePage
+ * @flow
+*/ 
+"use strict"
+
 import React, { Component } from 'react'
 import {
   FlatList,
@@ -14,6 +20,7 @@ import {
 import store from '../../redux/store'
 import { screen } from '../../common/utils'
 import { colors } from '../../common/colors'
+import ui from '../../common/ui'
 
 import { SearchBar } from 'react-native-elements'
 import Icon from 'react-native-vector-icons/Ionicons'
@@ -172,7 +179,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     // backgroundColor: colors.mainThemeColor,
-    paddingTop: 30
+    paddingTop: ui.statusBarHeight
   },
   headerTitle: {
     color: colors.mainThemeColor,
