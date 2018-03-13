@@ -22,11 +22,12 @@ class TouchableBounce extends React.Component<Props, {}> {
 
   constructor(props: Props) {
     super(props)
+
+    this.touchAnimation = new BounceAnimation(DEFAULT_SCALE)
   }
 
   static defaultProps = {
     containerStyle: null,
-    touchAnimation: new BounceAnimation(DEFAULT_SCALE),
   }
 
   _handleActivePressIn = () => {
@@ -42,7 +43,7 @@ class TouchableBounce extends React.Component<Props, {}> {
   }
 
   _bounceTo = (value, velocity, bounciness, callback) => {
-    this.props.touchAnimation.start(value, velocity, bounciness, callback)
+    this.touchAnimation.start(value, velocity, bounciness, callback)
   }
 
   render() {
@@ -51,7 +52,7 @@ class TouchableBounce extends React.Component<Props, {}> {
         onPress={this._handlePress}
         onPressIn={this._handleActivePressIn}
         onPressOut={this._handleActivePressOut}>
-        <Animated.View style={[this.props.touchAnimation.animations, this.props.containerStyle]}>{this.props.children}</Animated.View>
+        <Animated.View style={[this.touchAnimation.animations, this.props.containerStyle]}>{this.props.children}</Animated.View>
       </TouchableWithoutFeedback>
     )
   }
