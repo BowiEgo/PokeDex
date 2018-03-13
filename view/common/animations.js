@@ -9,12 +9,12 @@ import { Animated } from 'react-native'
  * base animation
 */
 class Animation {
-  animate: Ojbect
+  animatedValue: Ojbect
   animations: Object
 
-  constructor(toValue: ?number = 0) {
-    this.animate = new Animated.Value(toValue)
-    this.animation = this.createAnimations()
+  constructor(initialValue: ?number = 0) {
+    this.animatedValue = new Animated.Value(initialValue)
+    this.animations = this.createAnimations()
   }
 
   createAnimations(): Object {
@@ -22,56 +22,52 @@ class Animation {
   }
 }
 
-type Param = {
-  toValue?: number
-  animationDuration?: number
-}
-
 /**
  * bounce animation
 */
 class BounceAnimation extends Animation {
-  animate: Object
+  animatedValue: Object
 
-  toValue(toValue: number) {
-    Animated.spring(this.animate, {
+  start(toValue: number, velocity: number, bounciness: number, callback: func) {
+    Animated.spring(this.animatedValue, {
       toValue,
-      duration: this.animationDuration,
       velocity,
       bounciness,
-    }).start()
+    }).start(callback)
   }
 
   createAnimations(): Object {
-    return { transform: [{scale: this.animate}] }
+    return { transform: [{scale: this.animatedValue}] }
   }
 }
 
 /**
  * fade animation
+ * <initial> let animation = new FadeAnimation(initialOpacity?, duration?)
+ * <start animation> animation.start(toOpacity, duration?, callback?)
 */
 class FadeAnimation extends Animation {
-  animate: Object
+  animatedValue: Object
   animationDuration: number
-  constructor({ toValue = 0, animationDuration = 200 }: Param) {
-    super(toValue)
+  constructor(initialValue = 1, animationDuration = 200) {
+    super(initialValue)
 
     this.animationDuration = animationDuration
   }
 
-  toValue(toValue: number) {
-    Animated.timing(this.animate, {
+  start(toValue, animationDuration: number, callback: func) {
+    Animated.timing(this.animatedValue, {
       toValue,
       duration: this.animationDuration,
     }).start()
   }
 
   createAnimations(): Object {
-    return { opacity: this.animate }
+    return { opacity: this.animatedValue }
   }
 }
 
 export {
   BounceAnimation,
-  FadeAnimation
+  FadeAnimation,
 }

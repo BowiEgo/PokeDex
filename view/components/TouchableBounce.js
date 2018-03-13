@@ -9,22 +9,16 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native'
 
-import { FadeAnimation, BounceAnimation } from '../common/animations'
+import { BounceAnimation } from '../common/animations'
 
 type Props = {
   style: Object,
   children: any
 }
 
-type State = {
-  scale: any
-}
+const DEFAULT_SCALE = 1
 
-let scale = new Animated.Value(1)
-
-const DEFAULT_ANIMATION_DURATION: number = 150
-
-class TouchableBounce extends React.Component<Props, State> {
+class TouchableBounce extends React.Component<Props, {}> {
 
   constructor(props: Props) {
     super(props)
@@ -32,36 +26,32 @@ class TouchableBounce extends React.Component<Props, State> {
 
   static defaultProps = {
     containerStyle: null,
-    animation: new FadeAnimation({ animationDuration: DEFAULT_ANIMATION_DURATION }),
+    touchAnimation: new BounceAnimation(DEFAULT_SCALE),
   }
 
   _handleActivePressIn = () => {
-    this._bounceTo(2, 0.1, 0)
+    this._bounceTo(1.2, 0.1, 0)
   }
 
   _handleActivePressOut = () => {
-    this._bounceTo(1, 0.4, 10)
+    this._bounceTo(1, 0.4, 30)
   }
 
   _handlePress = () => {
-    this._bounceTo(2, 10, 20)
+    this._bounceTo(1, 20, 20)
   }
 
   _bounceTo = (value, velocity, bounciness, callback) => {
-    Animated.spring(scale, {
-      toValue: value,
-      velocity,
-      bounciness,
-    }).start(callback)
+    this.props.touchAnimation.start(value, velocity, bounciness, callback)
   }
 
   render() {
     return (
       <TouchableWithoutFeedback
-        onPressOut={this._handlePress}
+        onPress={this._handlePress}
         onPressIn={this._handleActivePressIn}
         onPressOut={this._handleActivePressOut}>
-        <Animated.View style={[{transform: [{scale: scale}]}, this.props.style]}>{this.props.children}</Animated.View>
+        <Animated.View style={[this.props.touchAnimation.animations, this.props.containerStyle]}>{this.props.children}</Animated.View>
       </TouchableWithoutFeedback>
     )
   }

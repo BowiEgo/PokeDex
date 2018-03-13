@@ -12,6 +12,7 @@ import {
 } from 'react-native'
 
 import TouchableBounce from '../../components/TouchableBounce'
+import TouchableFade from '../../components/TouchableFade'
 
 /* <PlaygroundPage />
 ============================================================================= */
@@ -27,11 +28,24 @@ export default class PlaygroundPage extends Component<{}> {
 
   render() {
     return (
-      <View style={{ paddingTop: 30 }}>
-        {/* <TouchableBounce>
+      <View style={styles.container}>
+        <TouchableBounce>
           <Image source={require('../../assets/img/001.png')}/>
-        </TouchableBounce> */}
+        </TouchableBounce>
+        <TouchableFade
+          duration={500}
+          fadeStatus="in">
+          <Image source={require('../../assets/img/002.png')}/>
+        </TouchableFade>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 30,
+    alignItems: 'center'
+  }
+})

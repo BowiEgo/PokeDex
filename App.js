@@ -14,19 +14,17 @@ import {
 } from 'react-native';
 
 import { TabNav, HomeDrawNav } from './view/router'
+import Playground from './view/pages/Playground'
 
 export default class App extends Component<{}> {
-  constructor() {
+  constructor() { 
     super()
   }
 
   render() {
     return (
       <TabNav/>
+      // <Playground/>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  
-})
