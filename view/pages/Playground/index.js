@@ -6,9 +6,12 @@
 
 import React, { Component } from 'react'
 import {
+  Image,
   StyleSheet,
   View
 } from 'react-native'
+
+import TouchableBounce from '../../components/TouchableBounce'
 
 /* <PlaygroundPage />
 ============================================================================= */
@@ -25,7 +28,9 @@ export default class PlaygroundPage extends Component<{}> {
   render() {
     return (
       <View style={{ paddingTop: 30 }}>
-        {this.state.content}
+        {/* <TouchableBounce>
+          <Image source={require('../../assets/img/001.png')}/>
+        </TouchableBounce> */}
       </View>
     )
   }

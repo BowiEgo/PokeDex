@@ -1,3 +1,5 @@
-export default const ui = {
+const ui = {
   statusBarHeight: 30
 }
+
+export default ui

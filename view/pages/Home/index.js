@@ -109,7 +109,7 @@ export default class HomePage extends Component<State, Props> {
     //   Platform.os === 'android' && StatusBar.setBackgroundColor(colors.mainThemeColor)
     // })
 
-    console.log(store.getState())
+    // console.log(store.getState())
   }
   
   // componentWillUnmount() {
@@ -166,7 +166,6 @@ export default class HomePage extends Component<State, Props> {
             }
           />
         </View>
-        <View>
       </View>
     )
   }

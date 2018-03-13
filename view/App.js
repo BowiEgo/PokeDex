@@ -17,18 +17,15 @@ import { TabNav, HomeDrawNav } from './router'
 import Playground from './pages/Playground'
 
 export default class App extends Component<{}> {
-  constructor() {
+  constructor() { 
     super()
   }
 
   render() {
     return (
-      <TabNav/>
+      <View><Text>Hello</Text></View>
+      // <TabNav/>
       // <Playground/>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  
-})
