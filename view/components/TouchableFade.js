@@ -1,5 +1,5 @@
 /**
- * TouchableBounce
+ * TouchableFade
  * flow
  */
 
@@ -29,7 +29,8 @@ class TouchableFade extends React.Component<Props, States> {
       fadeStatus: this.props.fadeStatus
     }
 
-    this.touchAnimation = this.state.fadeStatus === 'in' ? new FadeAnimation(1, this.props.duration) : new FadeAnimation(0, this.props.duration)
+    this.touchAnimation = this.state.fadeStatus === 'in' ?
+      new FadeAnimation(1, this.props.duration) : new FadeAnimation(0, this.props.duration)
   }
 
   static defaultProps = {
