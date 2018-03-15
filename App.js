@@ -13,7 +13,7 @@ import {
   View
 } from 'react-native';
 
-import { TabNav, HomeDrawNav } from './view/router'
+import { TabNav, HomeDrawNav } from './view/router/custom'
 import Playground from './view/pages/Playground'
 
 export default class App extends Component<{}> {

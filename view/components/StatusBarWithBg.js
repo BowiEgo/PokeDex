@@ -1,3 +1,10 @@
+/**
+ * StatusBarWithBg
+ * @prop {backgroundColor} 类型：string，默认：'#ff9999'
+ * @flow
+*/
+"use strict"
+
 import React from 'react'
 import {
   StatusBar,
@@ -6,7 +13,7 @@ import {
 } from 'react-native'
 import { screen } from '../common/utils'
 
-const StatusBarWithBg = ({backgroundColor, ...props}) => (
+const StatusBarWithBg = ({backgroundColor = '#ff9999', ...props}) => (
   <View style={[styles.statusBarBackGround, {backgroundColor}]}>
     <StatusBar translucent backgroundColor={backgroundColor} {...props}/>
   </View>

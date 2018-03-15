@@ -14,6 +14,8 @@ import {
 import TouchableBounce from '../../components/TouchableBounce'
 import TouchableFade from '../../components/TouchableFade'
 
+import { ButtonComponent } from '../../components/Button'
+
 /* <PlaygroundPage />
 ============================================================================= */
 
@@ -37,6 +39,7 @@ export default class PlaygroundPage extends Component<{}> {
           fadeStatus="in">
           <Image source={require('../../assets/img/002.png')}/>
         </TouchableFade>
+        {/* <ButtonComponent></ButtonComponent> */}
       </View>
     )
   }

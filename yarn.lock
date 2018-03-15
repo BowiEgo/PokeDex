@@ -4922,6 +4922,12 @@ react-native-gesture-handler@1.0.0-alpha.39:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-linear-gradient@^2.4.0:
+  version "2.4.0"
+  resolved "http://registry.npm.taobao.org/react-native-linear-gradient/download/react-native-linear-gradient-2.4.0.tgz#51d8ea12bb72a59bede9edc87b694b16b64cf435"
+  dependencies:
+    prop-types "^15.5.10"
+
 react-native-maps@0.19.0:
   version "0.19.0"
   resolved "http://registry.npm.taobao.org/react-native-maps/download/react-native-maps-0.19.0.tgz#ce94fad1cf360e335cb4338a68c95f791e869074"

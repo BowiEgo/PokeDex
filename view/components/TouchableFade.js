@@ -1,6 +1,10 @@
 /**
  * TouchableFade
- * flow
+ * @prop {fadeStatus} 初始淡入淡出状态，类型：string，可选：'in'，'out'
+ * @prop {duration} 动画时长，类型：number，默认：300，单位：ms
+ * @prop {containerStyle} 类型：styleObject
+ * @prop {children} 类型：componentObject
+ * @flow
  */
 
 import * as React from 'react'
@@ -12,7 +16,9 @@ import {
 import { FadeAnimation } from '../common/animations'
 
 type Props = {
-  style: Object,
+  fadeStatus: string,
+  duration: number,
+  containerStyle: Object,
   children: any
 }
 
