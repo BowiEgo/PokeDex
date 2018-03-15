@@ -60,7 +60,7 @@ const HomeStackNav = StackRouter(
 )
 
 const CustomStackNav = createNavigationContainer(
-  createNavigator(HomeStackNav)(CrossFadeNavigationView)
+  createNavigator(HomeStackNav)(CustomNavigationView)
 )
 
 const TabNav = TabNavigator(
