@@ -13,7 +13,7 @@ import {
   View
 } from 'react-native';
 
-import { TabNav, HomeDrawNav } from './view/router/custom'
+import { TabNav, HomeDrawNav, CustomStackNav } from './view/router/custom'
 import Playground from './view/pages/Playground'
 
 export default class App extends Component<{}> {
@@ -23,8 +23,9 @@ export default class App extends Component<{}> {
 
   render() {
     return (
-      <TabNav/>
-      // <Playground/>
+      // <TabNav/>
+      // <CustomStackNav/>
+      <Playground/>
     )
   }
 }

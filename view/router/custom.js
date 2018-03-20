@@ -12,6 +12,7 @@ import {
 import CustomNavigationView from './CustomNavigationView'
 import CrossFadeNavigationView from './CrossFadeNavigationView'
 import SharedElementsTransitioner from './SharedElementsTransitioner'
+import ExpandCircleTransitioner from './ExpandCircleTransitioner'
 
 import HomePage from '../pages/Home'
 import DiscoverPage from '../pages/Discover'
@@ -61,7 +62,7 @@ const HomeStackNav = StackRouter(
 )
 
 const CustomStackNav = createNavigationContainer(
-  createNavigator(HomeStackNav)(SharedElementsTransitioner)
+  createNavigator(HomeStackNav)(ExpandCircleTransitioner)
 )
 
 const TabNav = TabNavigator(

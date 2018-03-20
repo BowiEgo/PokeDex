@@ -19,6 +19,7 @@ import { colors, abilityColorMap } from '../../common/colors'
 
 import StatusBarWithBg from '../../components/StatusBarWithBg'
 import PageHeader from '../../components/PageHeader'
+import SharedView from '../../router/SharedView'
 
 /* <HomePage />
 ============================================================================= */
@@ -58,9 +59,11 @@ export default class PokemonDetailPage extends Component<Props, {}> {
           titleStyle={styles.headerTitle}
         />
         <View style={styles.wrapper}>
-          <Image
-            source={require('../../assets/img/001.png')}
-          />
+          <SharedView name={`image-妙蛙种子`} containerRouteName='PokemonDetailPage'>
+            <Image
+              source={require('../../assets/img/001.png')}
+            />
+          </SharedView>
           <View style={styles.basicInfo}>
             <View style={styles.basicInfoTextContainer}>
               <Text style={styles.basicInfoText}>身高</Text>

@@ -18,6 +18,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import { screen } from '../../common/utils'
 import { abilityColorMap } from '../../common/colors'
 import TouchableBounce from '../../components/TouchableBounce'
+import SharedView from '../../router/SharedView'
 
 /* <HomeGridItem />
 ============================================================================= */
@@ -53,10 +54,12 @@ export default class HomeGridItem extends Component<Props, {}> {
         activeOpacity={.8}
         onPress={this.props.onPress}>
         <TouchableBounce>
-          <Image
-            style={[{width: null, height: 150}]}
-            source={this.props.imageSource}
-          />
+          <SharedView name={`image-${this.props.name}`} containerRouteName='HomePage'>
+            <Image
+              style={[{width: null, height: 150}]}
+              source={this.props.imageSource}
+            />
+          </SharedView>
         </TouchableBounce>
         <View style={{alignItems: 'center'}}>
           <ImageBackground
